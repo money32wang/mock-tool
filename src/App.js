@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import { Container, AppBar, Toolbar, Typography } from '@material-ui/core';
+import ComponentFactory from './components/ComponentFactory';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6">Mock Tool</Typography>
+          </Toolbar>
+        </AppBar>
+        <Container maxWidth="md">
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Editor</Link>
+              </li>
+              <li>
+                <Link to="/mock-list">Mock List</Link>
+              </li>
+            </ul>
+          </nav>
+            <Routes>
+                {/*<Route path="/" element={<ComponentFactory componentName="Editor" />} />*/}
+                <Route path="/mock-list" element={<ComponentFactory componentName="MockList" />} />
+            </Routes>
+        </Container>
+      </Router>
   );
-}
+};
 
 export default App;
